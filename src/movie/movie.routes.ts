@@ -4,14 +4,15 @@ import {
   createMovie,
   fetchMovieById,
 } from "../movie/movie.controller";
-import { validateMovie } from "../movie/movie.validation"; // Adjust the import path if necessary
+import { validateMovie } from "../movie/movie.validation";
+import { authenticateJWT } from "../auth/auth.controller";
 
 const router = express.Router();
 
-router.get("/", fetchAllMovies);
+router.get("/", authenticateJWT, fetchAllMovies);
 
-router.post("/", validateMovie, createMovie);
+router.post("/", authenticateJWT, validateMovie, createMovie);
 
-router.get("/:id", fetchMovieById);
+router.get("/:id", authenticateJWT, fetchMovieById);
 
 export default router;
