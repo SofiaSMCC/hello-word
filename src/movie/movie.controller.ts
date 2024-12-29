@@ -41,7 +41,7 @@ export const fetchMovieById = async (
   next: NextFunction
 ): Promise<void> => {
   try {
-    const id = parseInt(req.params.id, 10);
+    const id = req.params.id;
     const movie = await getMovieById(id);
     if (!movie) {
       res.status(404).json({ message: "Película no encontrada" });
