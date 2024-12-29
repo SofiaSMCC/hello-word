@@ -68,7 +68,7 @@ export const authenticateJWT = (
   if (token) {
     jwt.verify(token, secretKey, (err, user) => {
       if (err) {
-        return res.sendStatus(403);
+        return res.sendStatus(401);
       }
 
       // @ts-ignore
