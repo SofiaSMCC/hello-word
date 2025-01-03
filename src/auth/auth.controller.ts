@@ -24,7 +24,7 @@ export const register = async (
   try {
     const existingUser = users.find((user) => user.username === username);
     if (existingUser) {
-      res.status(400).json({ message: "El usuario ya existe" });
+      res.status(400).json({ message: "User already exist." });
       return;
     }
 
@@ -32,7 +32,7 @@ export const register = async (
     const newUser = { username, password: hashedPassword };
     users.push(newUser);
 
-    res.status(201).json({ message: "Usuario registrado exitosamente" });
+    res.status(201).json({ message: "User registered successfully" });
   } catch (error) {
     next(error);
   }
@@ -48,13 +48,13 @@ export const login = async (
   try {
     const user = users.find((user) => user.username === username);
     if (!user) {
-      res.status(401).json({ message: "Credenciales incorrectas" });
+      res.status(401).json({ message: "Incorrect username" });
       return;
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
-      res.status(401).json({ message: "Credenciales incorrectas" });
+      res.status(401).json({ message: "Incorrect password" });
       return;
     }
 

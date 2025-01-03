@@ -15,6 +15,4 @@ app.use("/auth", authRoutes);
 app.use("/movies", movieRoutes);
 app.use("/anime", animeRoutes);
 
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
+app.listen(PORT, () => {});

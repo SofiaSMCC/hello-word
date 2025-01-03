@@ -13,7 +13,7 @@ require("dotenv").config();
 
 const url = process.env.ANIME_API_URL;
 
-// Probar API
+// API test
 
 export const fetchAllData = async (
   _req: Request,
@@ -42,7 +42,7 @@ export const fetchAnime = async (
   }
 };
 
-// Anime por genero
+// Get anime by gender
 
 export const animeByGenre = async (
   req: Request,
@@ -70,7 +70,7 @@ export const animeByGenre = async (
   }
 };
 
-// Anime por 1 o más palabras
+// Get anime by 1 or more words
 
 export const animeByWords = async (
   req: Request,
@@ -85,7 +85,7 @@ export const animeByWords = async (
     });
 
     if (searchResponse.data.data.length === 0) {
-      res.status(404).json({ error: "Anime no encontrado." });
+      res.status(404).json({ error: "Anime not found." });
       return;
     }
 
@@ -106,7 +106,7 @@ export const animeByWords = async (
   }
 };
 
-// Episodios de un anime
+// Get episodes by anime
 
 export const animeEpisodes = async (
   req: Request,
@@ -120,7 +120,7 @@ export const animeEpisodes = async (
     });
 
     if (searchResponse.data.data.length === 0) {
-      res.status(404).json({ error: "Anime no encontrado." });
+      res.status(404).json({ error: "Anime not found." });
       return;
     }
 
@@ -136,7 +136,7 @@ export const animeEpisodes = async (
         image: episode.images.jpg.image_url,
       })
     );
-    // .sort((a, b) => a.id - b.id); //Ordenar los episodios por id
+    // .sort((a, b) => a.id - b.id); // Order episodes by id
 
     res.json({ episodes: episodes });
   } catch (error) {
@@ -144,7 +144,7 @@ export const animeEpisodes = async (
   }
 };
 
-// Personajes de un anime
+// Get characters by anime
 
 export const fetchAnimeCharacters = async (
   req: Request,
@@ -159,7 +159,7 @@ export const fetchAnimeCharacters = async (
     });
 
     if (searchResponse.data.data.length === 0) {
-      res.status(404).json({ error: "Anime no encontrado." });
+      res.status(404).json({ error: "Anime not found." });
       return;
     }
 
