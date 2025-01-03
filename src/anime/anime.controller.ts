@@ -13,8 +13,6 @@ require("dotenv").config();
 
 const url = process.env.ANIME_API_URL;
 
-console.log(url);
-
 // Probar API
 
 export const fetchAllData = async (
