@@ -9,7 +9,11 @@ import {
   CharactersResponse,
 } from "./anime";
 
-const url = "https://api.jikan.moe/v4";
+require("dotenv").config();
+
+const url = process.env.ANIME_API_URL;
+
+console.log(url);
 
 // Probar API
 

@@ -2,8 +2,15 @@ import { Request, Response, NextFunction } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { User } from "./user";
+import dotenv from "dotenv";
 
-const secretKey = "1234";
+dotenv.config();
+
+const secretKey = process.env.SECRET_KEY;
+
+if (!secretKey) {
+  throw new Error("SECRET_KEY is not defined");
+}
 
 let users: User[] = [];
 
